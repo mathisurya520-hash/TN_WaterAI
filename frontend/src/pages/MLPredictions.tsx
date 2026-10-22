@@ -1,3 +1,4 @@
+import { apiFetch } from "../utils/api";
 import React, { useState } from 'react';
 import {
   BrainCircuit,
@@ -133,7 +134,7 @@ export const MLPredictions: React.FC = () => {
     });
 
     try {
-      const res = await fetch('/api/predictions/classify', {
+      const res = await apiFetch('/api/predictions/classify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

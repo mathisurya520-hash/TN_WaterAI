@@ -1,3 +1,4 @@
+import { apiFetch } from "../utils/api";
 import React, { useEffect, useState } from 'react';
 import {
   FlaskConical,
@@ -21,7 +22,7 @@ export const WaterQualityExplorer: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/parameters')
+    apiFetch('/api/parameters')
       .then((r) => r.json())
       .then((data) => {
         setParameters(data);
@@ -34,13 +35,13 @@ export const WaterQualityExplorer: React.FC = () => {
     if (!selectedParamKey) return;
 
     // Fetch trend
-    fetch(`/api/analytics/trends?parameter=${selectedParamKey}`)
+    apiFetch(`/api/analytics/trends?parameter=${selectedParamKey}`)
       .then((r) => r.json())
       .then((data) => setTrendData(data.trends || []))
       .catch((err) => console.error(err));
 
     // Fetch anomalies for this parameter
-    fetch(`/api/analytics/anomalies?parameter=${selectedParamKey}&limit=10`)
+    apiFetch(`/api/analytics/anomalies?parameter=${selectedParamKey}&limit=10`)
       .then((r) => r.json())
       .then((data) => setAnomalies(data || []))
       .catch((err) => console.error(err));

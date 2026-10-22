@@ -1,3 +1,4 @@
+import { apiFetch } from "../utils/api";
 import React, { useEffect, useState } from 'react';
 import {
   FileSpreadsheet,
@@ -16,8 +17,8 @@ export const Reports: React.FC = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch('/api/reports/summary').then((r) => r.json()),
-      fetch('/api/districts').then((r) => r.json())
+      apiFetch('/api/reports/summary').then((r) => r.json()),
+      apiFetch('/api/districts').then((r) => r.json())
     ])
       .then(([summary, dists]) => {
         setSummaryReport(summary);

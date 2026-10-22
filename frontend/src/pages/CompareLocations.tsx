@@ -1,3 +1,4 @@
+import { apiFetch } from "../utils/api";
 import React, { useEffect, useState } from 'react';
 import {
   GitCompare,
@@ -15,7 +16,7 @@ export const CompareLocations: React.FC = () => {
   const [stationDetails, setStationDetails] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('/api/stations')
+    apiFetch('/api/stations')
       .then((r) => r.json())
       .then((data) => {
         setStations(data);
@@ -34,7 +35,7 @@ export const CompareLocations: React.FC = () => {
 
     Promise.all(
       selectedStationIds.map((id) =>
-        fetch(`/api/stations/${id}`).then((r) => r.json())
+        apiFetch(`/api/stations/${id}`).then((r) => r.json())
       )
     )
       .then((details) => setStationDetails(details))

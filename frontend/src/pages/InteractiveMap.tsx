@@ -1,3 +1,4 @@
+import { apiFetch } from "../utils/api";
 import React, { useEffect, useState, useMemo, useRef } from 'react';
 import {
   MapContainer,
@@ -127,8 +128,8 @@ export const InteractiveMap: React.FC = () => {
     setStatusMessage('Fetching live data from FastAPI backend...');
     try {
       const [stRes, geoRes] = await Promise.all([
-        fetch('/api/stations'),
-        fetch('/api/geojson/tamil-nadu')
+        apiFetch('/api/stations'),
+        apiFetch('/api/geojson/tamil-nadu')
       ]);
       if (!stRes.ok) throw new Error('API server unreachable');
       const stData = await stRes.json();

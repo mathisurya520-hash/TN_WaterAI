@@ -1,3 +1,4 @@
+import { apiFetch } from "../utils/api";
 import React, { useEffect, useState } from 'react';
 import {
   Building2,
@@ -21,7 +22,7 @@ export const DistrictAnalytics: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/districts')
+    apiFetch('/api/districts')
       .then((r) => r.json())
       .then((data) => {
         setDistricts(data);
@@ -35,7 +36,7 @@ export const DistrictAnalytics: React.FC = () => {
 
   useEffect(() => {
     if (!selectedDistrictName) return;
-    fetch(`/api/districts/${selectedDistrictName}`)
+    apiFetch(`/api/districts/${selectedDistrictName}`)
       .then((r) => r.json())
       .then((data) => {
         setDistrictDetail(data);

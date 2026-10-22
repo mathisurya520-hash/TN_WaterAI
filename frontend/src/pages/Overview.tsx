@@ -1,3 +1,4 @@
+import { apiFetch } from "../utils/api";
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -29,7 +30,7 @@ export const Overview: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/api/overview')
+    apiFetch('/api/overview')
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch overview data');
         return res.json();

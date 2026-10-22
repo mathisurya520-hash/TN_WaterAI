@@ -1,3 +1,4 @@
+import { apiFetch } from "../utils/api";
 import React, { useEffect, useState } from 'react';
 import {
   Database,
@@ -25,7 +26,7 @@ export const DataSources: React.FC = () => {
   }, []);
 
   const fetchSources = () => {
-    fetch('/api/sources')
+    apiFetch('/api/sources')
       .then((r) => r.json())
       .then((data) => {
         setSources(data.sources || []);
@@ -53,7 +54,7 @@ export const DataSources: React.FC = () => {
     formData.append('source_name', uploadSourceName);
 
     try {
-      const res = await fetch('/api/admin/import', {
+      const res = await apiFetch('/api/admin/import', {
         method: 'POST',
         body: formData
       });

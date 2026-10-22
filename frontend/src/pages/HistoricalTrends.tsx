@@ -1,3 +1,4 @@
+import { apiFetch } from "../utils/api";
 import React, { useEffect, useState } from 'react';
 import {
   TrendingUp,
@@ -28,7 +29,7 @@ export const HistoricalTrends: React.FC = () => {
   ];
 
   useEffect(() => {
-    fetch('/api/districts')
+    apiFetch('/api/districts')
       .then((r) => r.json())
       .then((data) => {
         setDistricts(['All', ...data.map((d: any) => d.name).sort()]);
@@ -38,12 +39,12 @@ export const HistoricalTrends: React.FC = () => {
 
   useEffect(() => {
     const distQuery = selectedDistrict !== 'All' ? `&district=${encodeURIComponent(selectedDistrict)}` : '';
-    fetch(`/api/analytics/trends?parameter=${selectedParam}${distQuery}`)
+    apiFetch(`/api/analytics/trends?parameter=${selectedParam}${distQuery}`)
       .then((r) => r.json())
       .then((data) => setTrends(data.trends || []))
       .catch((err) => console.error(err));
 
-    fetch(`/api/analytics/anomalies?parameter=${selectedParam}&limit=15`)
+    apiFetch(`/api/analytics/anomalies?parameter=${selectedParam}&limit=15`)
       .then((r) => r.json())
       .then((data) => setAnomalies(data || []))
       .catch((err) => console.error(err));
