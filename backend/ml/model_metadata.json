@@ -1,0 +1,642 @@
+{
+  "model_id": "cpcb_water_classifier_v1",
+  "algorithm": "Random Forest Classifier (Ensemble)",
+  "trained_at": "2026-10-22T09:17:05.386868",
+  "training_samples_total": 2607,
+  "feature_schema": [
+    "ph",
+    "dissolved_oxygen",
+    "bod",
+    "fecal_coliform",
+    "total_coliform",
+    "electrical_conductivity",
+    "turbidity",
+    "nitrate_n",
+    "ammonia_n"
+  ],
+  "feature_ranges": {
+    "ph": {
+      "min": 0.0,
+      "max": 14.0,
+      "unit": "pH units",
+      "default": 7.2
+    },
+    "dissolved_oxygen": {
+      "min": 0.0,
+      "max": 25.0,
+      "unit": "mg/L",
+      "default": 6.5
+    },
+    "bod": {
+      "min": 0.0,
+      "max": 100.0,
+      "unit": "mg/L",
+      "default": 2.5
+    },
+    "fecal_coliform": {
+      "min": 0.0,
+      "max": 500000.0,
+      "unit": "MPN/100mL",
+      "default": 120.0
+    },
+    "total_coliform": {
+      "min": 0.0,
+      "max": 1000000.0,
+      "unit": "MPN/100mL",
+      "default": 450.0
+    },
+    "electrical_conductivity": {
+      "min": 0.0,
+      "max": 50000.0,
+      "unit": "\u00b5S/cm",
+      "default": 480.0
+    },
+    "turbidity": {
+      "min": 0.0,
+      "max": 2000.0,
+      "unit": "NTU",
+      "default": 4.5
+    },
+    "nitrate_n": {
+      "min": 0.0,
+      "max": 100.0,
+      "unit": "mgN/L",
+      "default": 1.2
+    },
+    "ammonia_n": {
+      "min": 0.0,
+      "max": 50.0,
+      "unit": "mgN/L",
+      "default": 0.4
+    }
+  },
+  "feature_importances": {
+    "ph": 0.1527,
+    "dissolved_oxygen": 0.1549,
+    "bod": 0.3748,
+    "fecal_coliform": 0.0734,
+    "total_coliform": 0.0426,
+    "electrical_conductivity": 0.0886,
+    "turbidity": 0.0106,
+    "nitrate_n": 0.0104,
+    "ammonia_n": 0.092
+  },
+  "classes": [
+    "Below Class E (Non-Conforming)",
+    "Below Class E (Severely Polluted)",
+    "Class A (Drinking without treatment)",
+    "Class B (Outdoor Bathing)",
+    "Class C (Drinking after conventional treatment)",
+    "Class D (Wildlife & Fisheries)",
+    "Class E (Irrigation & Industrial Cooling)"
+  ],
+  "evaluation_summary": {
+    "Baseline (Dummy Stratified)": {
+      "accuracy": 0.2548,
+      "macro_f1": 0.1279,
+      "classes": [
+        "Below Class E (Non-Conforming)",
+        "Below Class E (Severely Polluted)",
+        "Class A (Drinking without treatment)",
+        "Class B (Outdoor Bathing)",
+        "Class C (Drinking after conventional treatment)",
+        "Class D (Wildlife & Fisheries)",
+        "Class E (Irrigation & Industrial Cooling)"
+      ],
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          1,
+          3,
+          2,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          6,
+          6,
+          7,
+          4,
+          1
+        ],
+        [
+          2,
+          4,
+          11,
+          16,
+          30,
+          3,
+          4
+        ],
+        [
+          0,
+          10,
+          26,
+          46,
+          58,
+          10,
+          11
+        ],
+        [
+          3,
+          4,
+          27,
+          59,
+          74,
+          12,
+          15
+        ],
+        [
+          2,
+          3,
+          7,
+          12,
+          8,
+          0,
+          3
+        ],
+        [
+          0,
+          3,
+          5,
+          11,
+          8,
+          2,
+          1
+        ]
+      ],
+      "classification_report": {
+        "Below Class E (Non-Conforming)": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 7.0
+        },
+        "Below Class E (Severely Polluted)": {
+          "precision": 0.04,
+          "recall": 0.04,
+          "f1-score": 0.04,
+          "support": 25.0
+        },
+        "Class A (Drinking without treatment)": {
+          "precision": 0.13253012048192772,
+          "recall": 0.15714285714285714,
+          "f1-score": 0.1437908496732026,
+          "support": 70.0
+        },
+        "Class B (Outdoor Bathing)": {
+          "precision": 0.3006535947712418,
+          "recall": 0.2857142857142857,
+          "f1-score": 0.2929936305732484,
+          "support": 161.0
+        },
+        "Class C (Drinking after conventional treatment)": {
+          "precision": 0.39572192513368987,
+          "recall": 0.38144329896907214,
+          "f1-score": 0.3884514435695538,
+          "support": 194.0
+        },
+        "Class D (Wildlife & Fisheries)": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 35.0
+        },
+        "Class E (Irrigation & Industrial Cooling)": {
+          "precision": 0.027777777777777776,
+          "recall": 0.03333333333333333,
+          "f1-score": 0.030303030303030304,
+          "support": 30.0
+        },
+        "accuracy": 0.2547892720306513,
+        "macro avg": {
+          "precision": 0.12809763116637674,
+          "recall": 0.12823339645136406,
+          "f1-score": 0.1279341363027193,
+          "support": 522.0
+        },
+        "weighted avg": {
+          "precision": 0.26108376245435644,
+          "recall": 0.2547892720306513,
+          "f1-score": 0.2576743390057501,
+          "support": 522.0
+        }
+      }
+    },
+    "Logistic Regression": {
+      "accuracy": 0.5192,
+      "macro_f1": 0.5853,
+      "classes": [
+        "Below Class E (Non-Conforming)",
+        "Below Class E (Severely Polluted)",
+        "Class A (Drinking without treatment)",
+        "Class B (Outdoor Bathing)",
+        "Class C (Drinking after conventional treatment)",
+        "Class D (Wildlife & Fisheries)",
+        "Class E (Irrigation & Industrial Cooling)"
+      ],
+      "confusion_matrix": [
+        [
+          6,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          2,
+          16,
+          1,
+          0,
+          2,
+          1,
+          3
+        ],
+        [
+          0,
+          0,
+          45,
+          14,
+          11,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          45,
+          55,
+          49,
+          11,
+          1
+        ],
+        [
+          2,
+          0,
+          12,
+          75,
+          99,
+          5,
+          1
+        ],
+        [
+          2,
+          0,
+          0,
+          2,
+          0,
+          30,
+          1
+        ],
+        [
+          4,
+          3,
+          0,
+          0,
+          0,
+          3,
+          20
+        ]
+      ],
+      "classification_report": {
+        "Below Class E (Non-Conforming)": {
+          "precision": 0.375,
+          "recall": 0.8571428571428571,
+          "f1-score": 0.5217391304347826,
+          "support": 7.0
+        },
+        "Below Class E (Severely Polluted)": {
+          "precision": 0.8421052631578947,
+          "recall": 0.64,
+          "f1-score": 0.7272727272727273,
+          "support": 25.0
+        },
+        "Class A (Drinking without treatment)": {
+          "precision": 0.4368932038834951,
+          "recall": 0.6428571428571429,
+          "f1-score": 0.5202312138728323,
+          "support": 70.0
+        },
+        "Class B (Outdoor Bathing)": {
+          "precision": 0.3767123287671233,
+          "recall": 0.3416149068322981,
+          "f1-score": 0.3583061889250814,
+          "support": 161.0
+        },
+        "Class C (Drinking after conventional treatment)": {
+          "precision": 0.6149068322981367,
+          "recall": 0.5103092783505154,
+          "f1-score": 0.5577464788732395,
+          "support": 194.0
+        },
+        "Class D (Wildlife & Fisheries)": {
+          "precision": 0.5882352941176471,
+          "recall": 0.8571428571428571,
+          "f1-score": 0.6976744186046512,
+          "support": 35.0
+        },
+        "Class E (Irrigation & Industrial Cooling)": {
+          "precision": 0.7692307692307693,
+          "recall": 0.6666666666666666,
+          "f1-score": 0.7142857142857143,
+          "support": 30.0
+        },
+        "accuracy": 0.5191570881226054,
+        "macro avg": {
+          "precision": 0.5718690987792953,
+          "recall": 0.645104815570334,
+          "f1-score": 0.585322267467004,
+          "support": 522.0
+        },
+        "weighted avg": {
+          "precision": 0.5323140318375059,
+          "recall": 0.5191570881226054,
+          "f1-score": 0.5172173687050587,
+          "support": 522.0
+        }
+      }
+    },
+    "Decision Tree": {
+      "accuracy": 0.9272,
+      "macro_f1": 0.9241,
+      "classes": [
+        "Below Class E (Non-Conforming)",
+        "Below Class E (Severely Polluted)",
+        "Class A (Drinking without treatment)",
+        "Class B (Outdoor Bathing)",
+        "Class C (Drinking after conventional treatment)",
+        "Class D (Wildlife & Fisheries)",
+        "Class E (Irrigation & Industrial Cooling)"
+      ],
+      "confusion_matrix": [
+        [
+          6,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          24,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          70,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          10,
+          142,
+          9,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          1,
+          11,
+          180,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          35,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          27
+        ]
+      ],
+      "classification_report": {
+        "Below Class E (Non-Conforming)": {
+          "precision": 0.8571428571428571,
+          "recall": 0.8571428571428571,
+          "f1-score": 0.8571428571428571,
+          "support": 7.0
+        },
+        "Below Class E (Severely Polluted)": {
+          "precision": 0.8888888888888888,
+          "recall": 0.96,
+          "f1-score": 0.9230769230769231,
+          "support": 25.0
+        },
+        "Class A (Drinking without treatment)": {
+          "precision": 0.8641975308641975,
+          "recall": 1.0,
+          "f1-score": 0.9271523178807947,
+          "support": 70.0
+        },
+        "Class B (Outdoor Bathing)": {
+          "precision": 0.9281045751633987,
+          "recall": 0.8819875776397516,
+          "f1-score": 0.9044585987261147,
+          "support": 161.0
+        },
+        "Class C (Drinking after conventional treatment)": {
+          "precision": 0.9473684210526315,
+          "recall": 0.9278350515463918,
+          "f1-score": 0.9375,
+          "support": 194.0
+        },
+        "Class D (Wildlife & Fisheries)": {
+          "precision": 0.9459459459459459,
+          "recall": 1.0,
+          "f1-score": 0.9722222222222222,
+          "support": 35.0
+        },
+        "Class E (Irrigation & Industrial Cooling)": {
+          "precision": 1.0,
+          "recall": 0.9,
+          "f1-score": 0.9473684210526315,
+          "support": 30.0
+        },
+        "accuracy": 0.9272030651340997,
+        "macro avg": {
+          "precision": 0.9188068884368457,
+          "recall": 0.932423640904143,
+          "f1-score": 0.9241316200145062,
+          "support": 522.0
+        },
+        "weighted avg": {
+          "precision": 0.9291924670044864,
+          "recall": 0.9272030651340997,
+          "f1-score": 0.9270483719019922,
+          "support": 522.0
+        }
+      }
+    },
+    "Random Forest": {
+      "accuracy": 0.9195,
+      "macro_f1": 0.9291,
+      "classes": [
+        "Below Class E (Non-Conforming)",
+        "Below Class E (Severely Polluted)",
+        "Class A (Drinking without treatment)",
+        "Class B (Outdoor Bathing)",
+        "Class C (Drinking after conventional treatment)",
+        "Class D (Wildlife & Fisheries)",
+        "Class E (Irrigation & Industrial Cooling)"
+      ],
+      "confusion_matrix": [
+        [
+          7,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          24,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          70,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          10,
+          137,
+          14,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          12,
+          180,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          34,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          28
+        ]
+      ],
+      "classification_report": {
+        "Below Class E (Non-Conforming)": {
+          "precision": 0.7777777777777778,
+          "recall": 1.0,
+          "f1-score": 0.875,
+          "support": 7.0
+        },
+        "Below Class E (Severely Polluted)": {
+          "precision": 0.9230769230769231,
+          "recall": 0.96,
+          "f1-score": 0.9411764705882353,
+          "support": 25.0
+        },
+        "Class A (Drinking without treatment)": {
+          "precision": 0.8641975308641975,
+          "recall": 1.0,
+          "f1-score": 0.9271523178807947,
+          "support": 70.0
+        },
+        "Class B (Outdoor Bathing)": {
+          "precision": 0.9194630872483222,
+          "recall": 0.8509316770186336,
+          "f1-score": 0.8838709677419355,
+          "support": 161.0
+        },
+        "Class C (Drinking after conventional treatment)": {
+          "precision": 0.9230769230769231,
+          "recall": 0.9278350515463918,
+          "f1-score": 0.9254498714652957,
+          "support": 194.0
+        },
+        "Class D (Wildlife & Fisheries)": {
+          "precision": 1.0,
+          "recall": 0.9714285714285714,
+          "f1-score": 0.9855072463768116,
+          "support": 35.0
+        },
+        "Class E (Irrigation & Industrial Cooling)": {
+          "precision": 1.0,
+          "recall": 0.9333333333333333,
+          "f1-score": 0.9655172413793104,
+          "support": 30.0
+        },
+        "accuracy": 0.9195402298850575,
+        "macro avg": {
+          "precision": 0.9153703202920206,
+          "recall": 0.9490755190467043,
+          "f1-score": 0.9290963022046261,
+          "support": 522.0
+        },
+        "weighted avg": {
+          "precision": 0.9216966950301999,
+          "recall": 0.9195402298850575,
+          "f1-score": 0.9192602409035406,
+          "support": 522.0
+        }
+      }
+    }
+  },
+  "best_model": "Random Forest",
+  "best_macro_f1": 0.9290963022046261,
+  "limitations": [
+    "Model is trained on Central Pollution Control Board (CPCB) manual surface water quality datasets for Tamil Nadu.",
+    "Predictions reflect CPCB Designated Best Use categories and do not certify potable drinking water safety.",
+    "Features must fall within physically valid chemical/biological ranges."
+  ]
+}
